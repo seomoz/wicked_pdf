@@ -8,16 +8,7 @@ module WickedPdfHelper
   end
 
   def wicked_pdf_stylesheet_link_tag(*sources)
-    css_dir = WickedPdfHelper.root_path.join('public', 'stylesheets')
-    css_text = sources.collect { |source|
-      source = WickedPdfHelper.add_extension(source, 'css')
-      "<style type='text/css'>#{File.read(css_dir.join(source))}</style>"
-    }.join("\n")
-    css_text.respond_to?(:html_safe) ? css_text.html_safe : css_text
-  end
-
-  def wicked_pdf_stylesheet_with_path_tag(path, *sources)
-    css_dir = WickedPdfHelper.root_path.join(*path)
+    css_dir = WickedPdfHelper.root_path.join('public', 'researchtools', 'assets')
     css_text = sources.collect { |source|
       source = WickedPdfHelper.add_extension(source, 'css')
       "<style type='text/css'>#{File.read(css_dir.join(source))}</style>"
